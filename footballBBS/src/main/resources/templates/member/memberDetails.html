@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header>
+    <nav>
+        <ul style="list-style:none;">
+            <li style="display:inline-block; text-align:center;">
+                <a href="/" style="text-decoration: none; color:inherit; ">
+                    <h2>
+                        축구 이야기
+                    </h2>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <hr style="border-line:2px solid gray">
+</header>
+<section>
+    <div th:each="memberDetails : ${memberDetails}">
+        <p th:text="'회원번호 : ' + ${memberDetails.memberNumber}"></p>
+        <p th:text="'이름 : ' + ${memberDetails.name}"></p>
+        <p th:text="'아이디 : ' + ${memberDetails.id}"></p>
+        <p th:text="'패스워드 : ' + ${memberDetails.password}"></p>
+        <p th:text="'이메일 : ' + ${memberDetails.email}"></p>
+        <p th:text="'가입일 : ' + ${memberDetails.regDate}"></p>
+    </div>
+    <button type="button" onclick="location.href='/'">확인</button>
+</section>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header>
+    <nav>
+        <ul style="list-style:none;">
+            <li style="display:inline-block; text-align:center;">
+                <a href="/" style="text-decoration: none; color:inherit; ">
+                    <h2>
+                        축구 이야기
+                    </h2>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <hr style="border-line:2px solid gray">
+</header>
+<section>
+
+    <script type="text/javascript">
+        alert("이미 존재하는 ID입니다.");
+    </script>
+
+    <div style="text-align:center;">
+        <h3 style="text-align:center;">회원가입</h3>
+        <form action="/member/createId" method="post">
+
+            <br>
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name">
+            <br>
+            <br>
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id">
+            <br>
+            <br>
+            <label for="password">패스워드</label>
+            <input type="text" id="password" name="password">
+            <br>
+            <br>
+            <label for="email">이메일</label>
+            <input type="text" id="email" name="email">
+            <br>
+            <br>
+            <div style="text-align:center;">
+                <button type="submit">등록</button>
+                <button type="button" onclick="location.href='/' ">취소</button>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

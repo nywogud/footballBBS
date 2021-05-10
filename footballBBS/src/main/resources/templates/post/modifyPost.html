@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header>
+    <nav>
+        <ul style="list-style:none;">
+            <span th:if="${logInId}!=null">
+                <li style="display:inline-block; text-align:center;">
+                <a th:href="@{/logInHome(logInId = ${logInId})}" style="text-decoration: none; color:inherit; ">
+                    <h2>
+                        축구 이야기
+                    </h2>
+                </a>
+            </li>
+            </span>
+            <span th:unless="${logInId}!=null">
+                <li style="display:inline-block; text-align:center;">
+                <a href="/" style="text-decoration: none; color:inherit; ">
+                    <h2>
+                        축구 이야기
+                    </h2>
+                </a>
+            </li>
+            </span>
+            <span th:if="${logInId}!=null">
+                <li style="display:inline-block; text-align:right;">
+                    <a th:href="@{/post/list(logInId = ${logInId})}" style="text-decoration: none; color:inherit; ">
+                        <h4>목록으로</h4>
+                    </a>
+                </li>
+            </span>
+            <span th:unless="${logInId}!=null">
+                <li style="display:inline-block; text-align:right;">
+                    <a href="/post/list" style="text-decoration: none; color:inherit; ">
+                        <h4>목록으로</h4>
+                    </a>
+                </li>
+            </span>
+        </ul>
+    </nav>
+    <hr style="border-line:2px">
+</header>
+<section>
+    <form th:each="content : ${content}" action="/post/modifiedPost" method="post">
+        <div class="form-group">
+            <label>작성자</label>
+            <label th:text="${content.writer}"></label>
+            <br>
+            <br>
+            <label for="title">제 목</label>
+            <input th:value="${content.title}" type="text" id="title" name="title">
+            <br>
+            <p for="content">내용</p>
+            <textarea style="border-radius: 5px; border-color: gray; resize: none; width: 100%;" rows="30" id="content"
+                      name="content" th:text="${content.content}"></textarea>
+            <br>
+            <input type="hidden" id="contentNumber" name="contentNumber" th:value="${content.contentNumber}">
+            <input type="hidden" id="writer" name="writer" th:value="${content.writer}">
+        </div>
+        <div style="float:right">
+            <button type="submit">등록</button>
+        </div>
+    </form>
+</section>
+<br>
+<br>
+</body>
+</html>
+

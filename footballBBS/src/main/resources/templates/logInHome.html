@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul style="list-style:none;">
+            <span th:if="${logInId}!=null">
+                <li style="display:inline-block; text-align:center;">
+                <a th:href="@{/logInHome(logInId = ${logInId})}" style="text-decoration: none; color:inherit;">
+                    <h2>
+                        축구 이야기
+                    </h2>
+                </a>
+            </li>
+            </span>
+            <span th:unless="${logInId}!=null">
+                <li style="display:inline-block; text-align:center;">
+                <a href="/" style="text-decoration: none; color:inherit;">
+                    <h2>
+                        축구 이야기
+                    </h2>
+                </a>
+            </li>
+            </span>
+            <li style="display:inline-block; text-align:right; margin-left:10px;">
+                <a th:href="@{/post/list(logInId=${logInId})}" style="text-decoration: none; color:inherit;">
+                    <h4>게시판</h4>
+                </a>
+            </li>
+            <li style="display:inline-block; float:right; margin-left:10px;">
+                <a th:href="@{/member/logOut(logOutId=${logInId})}" style="text-decoration: none; color:inherit; ">
+                    <h5>로그 아웃</h5>
+                </a>
+            </li>
+            <li style="display:inline-block; float:right;">
+                <h5>님</h5>
+            </li>
+            <li style="display:inline-block; float:right;">
+                <h5 th:text="${logInId}"></h5>
+            </li>
+        </ul>
+    </nav>
+    <hr style="border-line :2px gray;">
+</header>
+<section>
+    <!--thymeleaf starter : static 폴더를 절대 경로로 사용함-->
+    <img src="img/soccer.jpg" style="width:100%; height: auto; border-radius:20px;">
+</section>
+</body>
+</html>

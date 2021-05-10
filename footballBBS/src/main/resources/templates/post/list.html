@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header>
+    <nav>
+        <ul style="list-style:none;">
+            <span th:if="${logInId}!=null">
+                <li style="display:inline-block; text-align:center;">
+                <a th:href="@{/logInHome(logInId = ${logInId})}" style="text-decoration: none; color:inherit;">
+                    <h2>
+                        축구 이야기
+                    </h2>
+                </a>
+            </li>
+            </span>
+            <span th:unless="${logInId}!=null">
+                <li style="display:inline-block; text-align:center;">
+                <a href="/" style="text-decoration: none; color:inherit; ">
+                    <h2>
+                        축구 이야기
+                    </h2>
+                </a>
+            </li>
+            </span>
+            <li style="display:inline-block; text-align:right;">
+                <a th:href="@{/post/write(logInId=${logInId})}" style="text-decoration: none; color:inherit; ">
+                    <h4>글쓰기</h4>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <hr style="border-line:2px solid gray">
+</header>
+<section>
+    <br>
+    <h3>자유 게시판</h3>
+    <table style="border-collapse: collapse; width:100%;">
+        <thead>
+        <tr>
+            <th style="height:30px; border-top : 2px solid gray; border-bottom:1px solid gray; padding:5px; text-align : center;">
+                글번호
+            </th>
+            <th style="height:30px; border-top : 2px solid gray; border-bottom:1px solid gray; padding:5px; text-align : center;">
+                제목
+            </th>
+            <th style="height:30px; border-top : 2px solid gray; border-bottom:1px solid gray; padding:5px; text-align : center;">
+                작성자
+            </th>
+            <th style="height:30px; border-top : 2px solid gray; border-bottom:1px solid gray; padding:5px; text-align : center;">
+                작성일
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post : ${posts}">
+            <td style="height:40px; border-line :none; padding:5px; font-size:0.8em; text-align : center;"
+                th:text="${post.contentNumber}"></td>
+            <td style="height:40px; border-line :none; padding:5px; font-size:0.8em; text-align : center;">
+                <span th:if="${logInId}!=null">
+                    <a style="text-decoration-line:none;"
+                       th:href="@{/post/viewPost(contentNumber=${post.contentNumber}, logInId=${logInId})}"
+                       th:text="${post.title}">
+                    </a>
+                </span>
+                <span th:unless="${logInId}!=null">
+                    <a style="text-decoration-line:none;"
+                       th:href="@{/post/viewPost(contentNumber=${post.contentNumber})}"
+                       th:text="${post.title}">
+                    </a>
+                </span>
+            </td>
+            <td style="height:40px; border-line:none; padding:5px; font-size:0.8em; text-align : center;"
+                th:text="${post.writer}"></td>
+            <td style="height:40px; border-line:none; padding:5px; font-size:0.8em; text-align : center;"
+                th:text="${post.regDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

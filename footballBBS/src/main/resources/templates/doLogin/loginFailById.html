@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example </title>
+</head>
+<header>
+    <nav>
+        <ul style="list-style:none;">
+            <li style="display:inline-block; text-align:center;">
+                <a href="/" style="text-decoration: none; color:inherit; ">
+                    <h2>
+                        축구 이야기
+                    </h2>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <hr style="border-line:2px">
+</header>
+<section>
+    <script type="text/javascript">
+        alert("일치하는 아이디가 존재하지 않습니다.");
+    </script>
+    <body>
+    <form action="/doLogin/login" method="post">
+        <div style="text-align: center;">
+            <div><label>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="id"/></label></div>
+            <div><label>Password&nbsp;<input type="password" name="password"/> </label></div>
+            <br>
+            <div><input type="submit" value="로그인"/></div>
+        </div>
+    </form>
+    </body>
+</section>
+</html>
